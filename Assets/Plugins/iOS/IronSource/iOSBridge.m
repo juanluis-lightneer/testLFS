@@ -559,7 +559,6 @@ char *const IRONSOURCE_EVENTS = "IronSourceEvents";
     dispatch_async(dispatch_get_main_queue(), ^{
         @synchronized(self) {
             _bannerView = bannerView;
-            _bannerView.translatesAutoresizingMaskIntoConstraints = NO;
             [_bannerView setAccessibilityLabel:@"bannerContainer"];
             
             _bannerView.center = [self getBannerCenter:_position rootView:_bannerViewController.view];

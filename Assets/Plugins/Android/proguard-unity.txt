@@ -20,15 +20,34 @@
 
 #Tenjin
 
--keep class com.tenjin.** { *; }
--keep public class com.google.android.gms.ads.identifier.** { *; }
--keep public class com.google.android.gms.common.** { *; }
--keep public class com.android.installreferrer.** { *; }
--keep class * extends java.util.ListResourceBundle {
-    protected Object[][] getContents();
-}
--keepattributes *Annotation*
+#-keep class com.tenjin.** { *; }
+#-keep public class com.google.android.gms.ads.identifier.** { *; }
+#-keep public class com.google.android.gms.common.** { *; }
+#-keep public class com.android.installreferrer.** { *; }
+#-keep class * extends java.util.ListResourceBundle {
+#    protected Object[][] getContents();
+#}
+#-keepattributes *Annotation*
 
+# Keep filenames and line numbers for stack traces
+-keepattributes SourceFile,LineNumberTable
+# Keep JavascriptInterface for WebView bridge
+-keepattributes JavascriptInterface
+# Sometimes keepattributes is not enough to keep annotations
+-keep class android.webkit.JavascriptInterface {
+   *;
+}
+# Keep all classes in Unity Ads package
+-keep class com.unity3d.ads.** {
+   *;
+}
+# Keep all classes in Unity Services package
+-keep class com.unity3d.services.** {
+   *;
+}
+-dontwarn com.google.ar.core.**
+-dontwarn com.unity3d.services.**
+-dontwarn com.ironsource.adapters.unityads.**
 
 #unity IAP
 -keep class com.unity.purchasing.** { *; }
@@ -36,6 +55,7 @@
 
 # Google Advertising Id
 -keep class com.google.android.gms.** { *; }
+-dontwarn com.google.android.gms.**
 
 # AdColony
 -keepclassmembers class * { @android.webkit.JavascriptInterface <methods>; }
@@ -129,7 +149,12 @@
 -dontwarn com.squareup.okhttp.**
 
 #GameAnalytics
--keep class com.gameanalytics.sdk.** { *; }
+-keep class  com.gameanalytics.sdk { *; }
+-keep class  com.gameanalytics.sdk.** { *; }
+ 
+-keep class  com.gameanalytics.sdk.GAPlatform { *; }
+-keep class  com.gameanalytics.sdk.GAPlatform.** { *; }
+-keep class android.net.ConnectivityManager.** { *; }
 
 #Other
 
@@ -152,8 +177,8 @@
 -dontwarn universal.tools.notifications.Adm*
 
 # For Helpshift SDK <= 4.8.1
--keepnames class * extends com.helpshift.support.fragments.MainFragment
--keepnames class * extends com.helpshift.campaigns.fragments.MainFragment
+#-keepnames class * extends com.helpshift.support.fragments.MainFragment
+#-keepnames class * extends com.helpshift.campaigns.fragments.MainFragment
 
 # For Serializable classes
 -keepnames class * implements java.io.Serializable
@@ -188,36 +213,40 @@
 
 # Cardview
 # Based on this issue http://stackoverflow.com/questions/29679177/cardview-shadow-not-appearing-in-lollipop-after-obfuscate-with-proguard/29698051
--keep class android.support.v7.widget.RoundRectDrawable { *; }
+#-keep class android.support.v7.widget.RoundRectDrawable { *; }
 
 #Helpshift:
--dontwarn com.helpshift.supportCampaigns.HelpshiftUtil
--dontwarn com.helpshift.supportCampaigns.gcm.HSGcmIntentService
--dontwarn com.helpshift.listeners.NotificationListener
--dontwarn com.helpshift.listeners.InternalHSInboxPushNotificationDelegate
--dontwarn com.helpshift.HelpshiftUnity
+#-dontwarn com.helpshift.supportCampaigns.HelpshiftUtil
+#-dontwarn com.helpshift.supportCampaigns.gcm.HSGcmIntentService
+#-dontwarn com.helpshift.listeners.NotificationListener
+#-dontwarn com.helpshift.listeners.InternalHSInboxPushNotificationDelegate
+#-dontwarn com.helpshift.HelpshiftUnity
 
 #Helpshift stuff added after trial & error by Jan:
--dontwarn com.helpshift.supportCampaigns.HelpshiftUtil
--dontwarn com.helpshift.supportCampaigns.gcm.HSGcmIntentService
--dontwarn com.helpshift.listeners.NotificationListener
--dontwarn com.helpshift.listeners.InternalHSInboxPushNotificationDelegate
--dontwarn com.helpshift.HelpshiftUnity
--keep class com.helpshift.supportCampaigns.UnityAPIDelegate { *; }
--keep class com.helpshift.dex.HelpshiftDexLoader { *; }
--keep class com.helpshift.R$* { *; }
--keep class android.support.v7.app.AppCompatActivity { *; }
--keep class android.support.v7.app.ActionBar { *; }
--keep class android.support.v4.app.Fragment { *; }
--keep class android.support.v4.app.FragmentActivity { *; }
--keep class android.support.v4.app.FragmentManager { *; }
--keep class android.support.v4.app.FragmentTransaction { *; }
--keep class android.support.v4.view.MenuItemCompat** { *; }
+#-dontwarn com.helpshift.supportCampaigns.HelpshiftUtil
+#-dontwarn com.helpshift.supportCampaigns.gcm.HSGcmIntentService
+#-dontwarn com.helpshift.listeners.NotificationListener
+#-dontwarn com.helpshift.listeners.InternalHSInboxPushNotificationDelegate
+#-dontwarn com.helpshift.HelpshiftUnity
+#-keep class com.helpshift.supportCampaigns.UnityAPIDelegate { *; }
+#-keep class com.helpshift.dex.HelpshiftDexLoader { *; }
+#-keep class com.helpshift.R$* { *; }
+#-keep class android.support.v7.app.AppCompatActivity { *; }
+#-keep class android.support.v7.app.ActionBar { *; }
+#-keep class android.support.v4.app.Fragment { *; }
+#-keep class android.support.v4.app.FragmentActivity { *; }
+#-keep class android.support.v4.app.FragmentManager { *; }
+#-keep class android.support.v4.app.FragmentTransaction { *; }
+#-keep class android.support.v4.view.MenuItemCompat** { *; }
 #Additional exceptions which were instructed from HS support. (Case: App crashing from clicking any topic on main page)
--keep class android.support.** { *; }
--keep interface android.support.** { *; }
+#-keep class android.support.** { *; }
+#-keep interface android.support.** { *; }
 #To prevent crash when reply on discussion is received.
--keep class com.helpshift.** { *; }
--keep interface com.helpshift.** { *; }
+#-keep class com.helpshift.** { *; }
+#-keep interface com.helpshift.** { *; }
 
 
+# UTNotifications Proguard Config (please do not edit)
+-keep public class universal.tools.notifications.* { *; }
+-dontwarn com.amazon.device.messaging.*
+-dontwarn universal.tools.notifications.AdmIntentService

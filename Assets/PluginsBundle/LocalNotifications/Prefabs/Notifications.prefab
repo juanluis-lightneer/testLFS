@@ -1,0 +1,189 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &743472198726165198
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 743472198726165193}
+  - component: {fileID: 1451995985478167718}
+  - component: {fileID: 6538594141313424673}
+  m_Layer: 0
+  m_Name: Notifications
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &743472198726165193
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 743472198726165198}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1509416765895251739}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1451995985478167718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 743472198726165198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f9ed891fdbf61044b0d2437e7753634, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6538594141313424673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 743472198726165198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6035ebba22dd9814d826ca315a0c8384, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabName: NotificationsPrefab
+--- !u!1 &5362166949945379416
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1509416765895251739}
+  - component: {fileID: 2659753208928959876}
+  - component: {fileID: 5491970382746634709}
+  - component: {fileID: 4695109636289879278}
+  - component: {fileID: 5345216066173821989}
+  m_Layer: 0
+  m_Name: NotificationsCode
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1509416765895251739
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5362166949945379416}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 743472198726165193}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2659753208928959876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5362166949945379416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccc7dbd74b6d3b947a554ff2a12d3ea7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  refs:
+    scheduler: {fileID: 5491970382746634709}
+  enableEditorLog: 0
+  classForAndroidNotifications: Lightneer.Notifications.UnityAndroidLocalNotificationStrategy
+  classForIOSNotifications: Lightneer.Notifications.UnityIOSLocalNotificationStrategy
+--- !u!114 &5491970382746634709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5362166949945379416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f2d96e8fa6cfab46a9635254577e7db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  refs:
+    notificationsAccessor: {fileID: 4695109636289879278}
+--- !u!114 &4695109636289879278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5362166949945379416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06316df31e34a3b4d9bb47dd7f0ae802, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSecondsFromNotificationToOpen: 10
+  debugEnabled: 0
+  notificationStorage: {fileID: 5345216066173821989}
+--- !u!114 &5345216066173821989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5362166949945379416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7861e618116fd2440acc66ce2943f909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  notifications:
+  - id: 0
+    title: Once
+    text: Schedule once
+    profile: 
+    badge: 0
+    triggerInHours: 0.00138
+    intervalInHours: 0
+    enabled: 1
+    numberOfTimesToBeNotified: 1
+  - id: 1
+    title: Forever
+    text: This notification is always scheduled
+    profile: 
+    badge: 0
+    triggerInHours: 0.00222
+    intervalInHours: 0
+    enabled: 1
+    numberOfTimesToBeNotified: 0
+  - id: 2
+    title: Code activated
+    text: Enabled by code call
+    profile: 
+    badge: 0
+    triggerInHours: 0.00277
+    intervalInHours: 0
+    enabled: 0
+    numberOfTimesToBeNotified: 0
+  - id: 3
+    title: Repeating
+    text: Notification that repeats after x hours
+    profile: 
+    badge: 0
+    triggerInHours: 0.003
+    intervalInHours: 0.0833
+    enabled: 1
+    numberOfTimesToBeNotified: 0

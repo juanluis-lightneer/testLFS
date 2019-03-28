@@ -6,17 +6,17 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.1'
+        classpath 'com.android.tools.build:gradle:3.2.0'
     }
 }
 
 allprojects {
     repositories {
-        google()
-        jcenter()
         flatDir {
             dirs 'libs'
         }
+        google()
+        jcenter()
     }
 }
 
@@ -24,40 +24,23 @@ apply plugin: 'com.android.application'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation(name: 'android.arch.core.runtime-1.1.0', ext:'aar')
-    implementation(name: 'android.arch.lifecycle.livedata-core-1.1.0', ext:'aar')
-    implementation(name: 'android.arch.lifecycle.runtime-1.1.0', ext:'aar')
-    implementation(name: 'android.arch.lifecycle.viewmodel-1.1.0', ext:'aar')
-    implementation(name: 'com.android.support.animated-vector-drawable-27.1.1', ext:'aar')
-    implementation(name: 'com.android.support.appcompat-v7-27.1.1', ext:'aar')
-    implementation(name: 'com.android.support.cardview-v7-27.1.1', ext:'aar')
-    implementation(name: 'com.android.support.customtabs-27.1.1', ext:'aar')
-    implementation(name: 'com.android.support.support-compat-27.1.1', ext:'aar')
-    implementation(name: 'com.android.support.support-core-ui-27.1.1', ext:'aar')
-    implementation(name: 'com.android.support.support-core-utils-27.1.1', ext:'aar')
-    implementation(name: 'com.android.support.support-fragment-27.1.1', ext:'aar')
-    implementation(name: 'com.android.support.support-media-compat-27.1.1', ext:'aar')
-    implementation(name: 'com.android.support.support-v4-27.1.1', ext:'aar')
-    implementation(name: 'com.android.support.support-vector-drawable-27.1.1', ext:'aar')
-    implementation(name: 'facebook-android-wrapper-7.12.1', ext:'aar')
-    implementation(name: 'facebook-applinks', ext:'aar')
-    implementation(name: 'facebook-common', ext:'aar')
-    implementation(name: 'facebook-core', ext:'aar')
-    implementation(name: 'facebook-login', ext:'aar')
-    implementation(name: 'facebook-messenger', ext:'aar')
-    implementation(name: 'facebook-places', ext:'aar')
-    implementation(name: 'facebook-share', ext:'aar')
-    implementation(name: 'installreferrer-1.0', ext:'aar')
-    implementation project(':IronSource')
+    implementation(group: 'com.google.android.gms', name: 'play-services-ads', version: '15.0.1',
+    {
+        exclude group: 'com.android.support'
+        exclude group: 'com.google.android.gms', module: 'play-services-basement'
+        exclude group: 'com.google.android.gms', module: 'play-services-ads-identifier'
+    })
+    **DEPS**
 }
 
 android {
-    compileSdkVersion 27
-    buildToolsVersion '27'
+    compileSdkVersion 28
+    buildToolsVersion '28.0.3'
 
     defaultConfig {
         minSdkVersion 21
-        targetSdkVersion 27
+        targetSdkVersion 28
+
         ndk {
             abiFilters 'armeabi-v7a', 'x86'
         }
@@ -85,7 +68,6 @@ android {
             minifyEnabled false
             useProguard false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-unity.txt'
-            
             signingConfig signingConfigs.debug
         }
     }
