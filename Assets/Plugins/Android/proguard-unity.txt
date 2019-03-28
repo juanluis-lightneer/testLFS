@@ -1,0 +1,223 @@
+-keep class bitter.jnibridge.* { *; }
+-keep class com.unity3d.player.* { *; }
+-keep class org.fmod.* { *; }
+-ignorewarnings
+
+#IronSource
+-keepclassmembers class com.ironsource.sdk.controller.IronSourceWebView$JSInterface {
+    public *;
+}
+-keepclassmembers class * implements android.os.Parcelable {
+    public static final android.os.Parcelable$Creator *;
+}
+-keep public class com.google.android.gms.ads.** {
+   public *;
+}
+-keep class com.ironsource.adapters.** { *;
+}
+-keep class com.ironsource.unity.androidbridge.** { *;
+}
+
+#Tenjin
+
+-keep class com.tenjin.** { *; }
+-keep public class com.google.android.gms.ads.identifier.** { *; }
+-keep public class com.google.android.gms.common.** { *; }
+-keep public class com.android.installreferrer.** { *; }
+-keep class * extends java.util.ListResourceBundle {
+    protected Object[][] getContents();
+}
+-keepattributes *Annotation*
+
+
+#unity IAP
+-keep class com.unity.purchasing.** { *; }
+-dontwarn com.unity.purchasing.**
+
+# Google Advertising Id
+-keep class com.google.android.gms.** { *; }
+
+# AdColony
+-keepclassmembers class * { @android.webkit.JavascriptInterface <methods>; }
+-dontwarn com.adcolony.sdk.AdColonyPubServicesPushGcmListenerService
+-dontwarn com.adcolony.sdk.AdColonyPubServicesPushRegIdIntentService
+-dontwarn com.adcolony.sdk.AdColonyPubServicesPushRegIdListenerService
+
+# Keep ADCNative class members unobfuscated
+-keepclassmembers class com.adcolony.sdk.ADCNative** {*;}
+
+# AppLovin
+-dontwarn com.applovin.**
+-keep class com.applovin.** { *; }
+-keep class com.google.android.gms.ads.identifier.** { *; }
+
+# UnityAds
+-keep class com.unity3d.ads.** {*;}
+-keepattributes SourceFile,LineNumberTable
+-keepattributes JavascriptInterface
+-keep class android.webkit.JavascriptInterface { *; }
+
+# Chartboost
+-keep class com.chartboost.** { *; }
+
+#HyprMX
+-keepattributes InnerClasses
+-keepattributes Signature
+-keepattributes *Annotation*
+-keepattributes EnclosingMethod
+-keep class com.hyprmx.** { *; }
+-keep class okhttp3.hyprmx.** { *; }
+-keep interface okhttp3.hyprmx.** { *; }
+-keepclassmembers class * {
+    @android.webkit.JavascriptInterface <methods>;
+}
+-dontwarn okhttp3.hyprmx.**
+-dontwarn okio.hyprmx.**
+-dontwarn com.google.android.gms.ads.identifier.**
+
+#AWS
+
+-keep class org.apache.commons.logging.**               { *; }
+-keep class com.amazonaws.services.sqs.QueueUrlHandler  { *; }
+-keep class com.amazonaws.javax.xml.transform.sax.*     { public *; }
+-keep class com.amazonaws.javax.xml.stream.**           { *; }
+-keep class com.amazonaws.services.**.model.*Exception* { *; }
+-keep class org.codehaus.**                             { *; }
+-keepattributes Signature,*Annotation*
+
+-dontwarn javax.xml.stream.events.**
+-dontwarn org.codehaus.jackson.**
+-dontwarn org.apache.commons.logging.impl.**
+-dontwarn org.apache.http.conn.scheme.**
+
+#GSON
+-keepattributes Signature
+
+# For using GSON @Expose annotation
+-keepattributes *Annotation*
+
+# Gson specific classes
+-dontwarn sun.misc.**
+#-keep class com.google.gson.stream.** { *; }
+
+# Application classes that will be serialized/deserialized over Gson
+-keep class com.google.gson.examples.android.model.** { *; }
+
+# Prevent proguard from stripping interface information from TypeAdapterFactory,
+# JsonSerializer, JsonDeserializer instances (so they can be used in @JsonAdapter)
+-keep class * implements com.google.gson.TypeAdapterFactory
+-keep class * implements com.google.gson.JsonSerializer
+-keep class * implements com.google.gson.JsonDeserializer
+
+#OKHttp
+-dontwarn okhttp3.**
+-dontwarn okio.**
+-dontwarn javax.annotation.**
+# A resource is loaded with a relative path so the package of this class must be preserved.
+-keepnames class okhttp3.internal.publicsuffix.PublicSuffixDatabase
+
+
+#some gms stuff
+-dontwarn com.google.android.gms.measurement.AppMeasurement*
+-keep class com.android.vending.billing.**
+
+#squareup
+-keepattributes Signature
+-keepattributes *Annotation*
+-keep class com.squareup.okhttp.** { *; }
+-keep interface com.squareup.okhttp.** { *; }
+-dontwarn com.squareup.okhttp.**
+
+#GameAnalytics
+-keep class com.gameanalytics.sdk.** { *; }
+
+#Other
+
+-dontwarn javassist.util.**
+-dontwarn javassist.tools.**
+-dontwarn com.squareup.javapoet.**
+-dontwarn org.reflections.**
+
+#-dontnote android.support.**
+-dontwarn org.junit.**
+
+-dontwarn com.unity.purchasing.googleplay.GooglePlayPurchasing$6
+-dontwarn com.unity.purchasing.googleplay.IabHelper$2$1
+
+-dontwarn universal.tools.notifications.ADMProvider
+
+#-dontnote org.apache.http.**
+#-dontnote android.net.http.**
+
+-dontwarn universal.tools.notifications.Adm*
+
+# For Helpshift SDK <= 4.8.1
+-keepnames class * extends com.helpshift.support.fragments.MainFragment
+-keepnames class * extends com.helpshift.campaigns.fragments.MainFragment
+
+# For Serializable classes
+-keepnames class * implements java.io.Serializable
+-keepclassmembers class * implements java.io.Serializable {
+    static final long serialVersionUID;
+    private static final java.io.ObjectStreamField[] serialPersistentFields;
+    !static !transient <fields>;
+    private void writeObject(java.io.ObjectOutputStream);
+    private void readObject(java.io.ObjectInputStream);
+    java.lang.Object writeReplace();
+    java.lang.Object readResolve();
+}
+
+# If the app uses support libs version 23 or below
+#-keepclassmembernames class android.support.v4.app.Fragment {
+#    android.support.v4.app.FragmentManagerImpl mChildFragmentManager;
+#}
+
+# Support design
+-dontwarn android.support.design.**
+-keep class android.support.design.** { *; }
+-keep interface android.support.design.** { *; }
+-keep public class android.support.design.R$* { *; }
+
+# Appcompat
+-keep public class android.support.v7.widget.** { *; }
+-keep public class android.support.v7.internal.widget.** { *; }
+-keep public class android.support.v7.internal.view.menu.** { *; }
+-keep public class * extends android.support.v4.view.ActionProvider {
+    public <init>(android.content.Context);
+}
+
+# Cardview
+# Based on this issue http://stackoverflow.com/questions/29679177/cardview-shadow-not-appearing-in-lollipop-after-obfuscate-with-proguard/29698051
+-keep class android.support.v7.widget.RoundRectDrawable { *; }
+
+#Helpshift:
+-dontwarn com.helpshift.supportCampaigns.HelpshiftUtil
+-dontwarn com.helpshift.supportCampaigns.gcm.HSGcmIntentService
+-dontwarn com.helpshift.listeners.NotificationListener
+-dontwarn com.helpshift.listeners.InternalHSInboxPushNotificationDelegate
+-dontwarn com.helpshift.HelpshiftUnity
+
+#Helpshift stuff added after trial & error by Jan:
+-dontwarn com.helpshift.supportCampaigns.HelpshiftUtil
+-dontwarn com.helpshift.supportCampaigns.gcm.HSGcmIntentService
+-dontwarn com.helpshift.listeners.NotificationListener
+-dontwarn com.helpshift.listeners.InternalHSInboxPushNotificationDelegate
+-dontwarn com.helpshift.HelpshiftUnity
+-keep class com.helpshift.supportCampaigns.UnityAPIDelegate { *; }
+-keep class com.helpshift.dex.HelpshiftDexLoader { *; }
+-keep class com.helpshift.R$* { *; }
+-keep class android.support.v7.app.AppCompatActivity { *; }
+-keep class android.support.v7.app.ActionBar { *; }
+-keep class android.support.v4.app.Fragment { *; }
+-keep class android.support.v4.app.FragmentActivity { *; }
+-keep class android.support.v4.app.FragmentManager { *; }
+-keep class android.support.v4.app.FragmentTransaction { *; }
+-keep class android.support.v4.view.MenuItemCompat** { *; }
+#Additional exceptions which were instructed from HS support. (Case: App crashing from clicking any topic on main page)
+-keep class android.support.** { *; }
+-keep interface android.support.** { *; }
+#To prevent crash when reply on discussion is received.
+-keep class com.helpshift.** { *; }
+-keep interface com.helpshift.** { *; }
+
+
